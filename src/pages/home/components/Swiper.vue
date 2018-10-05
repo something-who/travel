@@ -5,7 +5,7 @@
     >
        <!-- slides -->
        <swiper-slide
-       v-for="item of swiperList"
+       v-for="item of list"
        :key="item.id">
            <img :src="item.imgUrl" alt="swiper">
        </swiper-slide>
@@ -17,27 +17,16 @@
 <script>
 export default {
     name: 'HomeSwiper',
+    props: {
+        list: Array
+    },
     data(){
         return{
             swiperOption:{
                 loop: true,
                 pagination: '.swiper-pagination',
                 autoplay: 5000
-            },
-            swiperList:[
-                {
-                    id: '0',
-                    imgUrl: 'https://img1.qunarzz.com/vc/f3/ea/ae/095dd61c09f2797ba9147bd03f.jpg'
-                },
-                {
-                    id: '1',
-                    imgUrl: 'https://img1.qunarzz.com/vc/4e/c2/9a/61222b895136533c133ee9e8bc.jpg'
-                },
-                {
-                    id: '2',
-                    imgUrl: 'https://img1.qunarzz.com/vc/ce/4b/45/7f78e2003fb5fb65c57eb1a800.jpg'
-                },
-            ]
+            }
         }
     },
 }
