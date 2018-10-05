@@ -49,6 +49,8 @@ export default {
 <style lang="stylus" scoped>
     @import '~style/varibles.styl'
     @import '~style/mixins.styl'
+    .icons >>> .swiper-pagination-bullet-active
+        background: #fff
     .icons >>> .swiper-container
         height: 0
         padding-bottom: 50%
