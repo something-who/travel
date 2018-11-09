@@ -1,17 +1,105 @@
 <template lang="html">
-    <div>
-        <div class="list">
+    <div  class="list" ref="wrapper">
+        <div>
             <div class="area">
-                <div
-                class="title border-topbottom"
-                >
+                <div class="title border-topbottom" >
                     当前城市
                 </div>
-                <div class="botton-list">
-                    <div class="botton-wrapper">
+                <div class="button-list">
+                    <div class="button-wrapper">
                         <div class="button">
                             北京
                         </div>
+                    </div>
+                    <div class="button-wrapper">
+                        <div class="button">
+                            北京
+                        </div>
+                    </div>
+                    <div class="button-wrapper">
+                        <div class="button">
+                            北京
+                        </div>
+                    </div>
+                    <div class="button-wrapper">
+                        <div class="button">
+                            北京
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="area">
+                <div class="title border-topbottom" >
+                    热门城市
+                </div>
+            </div>
+            <div class="area">
+                <div class="title border-topbottom" >
+                    A
+                </div>
+                <div class="item-list">
+                    <div class="item border-topbottom">
+                        阿拉善
+                    </div>
+                    <div class="item  border-topbottom">
+                        阿拉善
+                    </div>
+                    <div class="item  border-topbottom">
+                        阿拉善
+                    </div>
+                    <div class="item  border-topbottom">
+                        阿拉善
+                    </div>
+                </div>
+                <div class="title border-topbottom" >
+                    A
+                </div>
+                <div class="item-list">
+                    <div class="item border-topbottom">
+                        阿拉善
+                    </div>
+                    <div class="item  border-topbottom">
+                        阿拉善
+                    </div>
+                    <div class="item  border-topbottom">
+                        阿拉善
+                    </div>
+                    <div class="item  border-topbottom">
+                        阿拉善
+                    </div>
+                </div>
+                <div class="title border-topbottom" >
+                    B
+                </div>
+                <div class="item-list">
+                    <div class="item border-topbottom">
+                        阿拉善
+                    </div>
+                    <div class="item  border-topbottom">
+                        阿拉善
+                    </div>
+                    <div class="item  border-topbottom">
+                        阿拉善
+                    </div>
+                    <div class="item  border-topbottom">
+                        阿拉善
+                    </div>
+                </div>
+                <div class="title border-topbottom" >
+                    C
+                </div>
+                <div class="item-list">
+                    <div class="item border-topbottom">
+                        阿拉善
+                    </div>
+                    <div class="item  border-topbottom">
+                        阿拉善
+                    </div>
+                    <div class="item  border-topbottom">
+                        阿拉善
+                    </div>
+                    <div class="item  border-topbottom">
+                        阿拉善
                     </div>
                 </div>
             </div>
@@ -20,8 +108,12 @@
 </template>
 
 <script>
+import Bscroll from "better-scroll"
 export default {
-    name: "CityList"
+    name: "CityList",
+    mounted () {
+        this.scroll = new Bscroll(this.$refs.wrapper)
+    }
 }
 </script>
 
@@ -41,10 +133,12 @@ export default {
         left: 0
         right: 0
         bottom: 0
+        overflow: hidden
         .title
-            line-height: .54rem
+            line-height: .44rem
             background: #eee
             color: #666
+            padding-left: .2rem
             font-size: .26rem
         .button-list
             overflow: hidden
@@ -53,13 +147,15 @@ export default {
                 float: left
                 width: 33.33%
                 .button
-                     margin: .1rem
-                     padding: .1rem 0
-                     text-align: center
-                     border: .02rem solid #ccc
-                     border-radius: .06rem
+                    margin: .1rem
+                    padding: .1rem 0
+                    text-align: center
+                    border: .02rem solid #ccc
+                    border-radius: .06rem
         .item-list
+            // overflow:hidden
             .item
                 line-height: .76rem
+                color: #666
                 padding-left: .2rem
 </style>
