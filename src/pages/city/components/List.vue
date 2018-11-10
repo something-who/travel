@@ -7,7 +7,7 @@
                 </div>
                 <div class="button-list">
                     <div class="button-wrapper">
-                        <div class="button">
+                        <div class="button" @click="handleCurrentCityClick">
                             {{this.city}}
                         </div>
                     </div>
@@ -65,6 +65,9 @@ export default {
         handleCityClick(city){
             // console.log(city)
             this.changeCity(city)
+            this.$router.push('/')
+        },
+        handleCurrentCityClick(){
             this.$router.push('/')
         },
         ...mapMutations(['changeCity'])
