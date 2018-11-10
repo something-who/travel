@@ -11,16 +11,20 @@
         </div>
         <router-link to="/city">
             <div class="header-right">
-                城市
-                    <span class="iconfont arrow-icon">&#xe64a;</span>
+                {{this.city}}
+                 <span class="iconfont arrow-icon">&#xe64a;</span>
             </div>
         </router-link>
     </div>
 </template>
 
 <script>
+import {mapState} from "vuex"
 export default {
-    name: 'HomeHeader'
+    name: 'HomeHeader',
+    computed: {
+        ...mapState(['city'])
+    }
 }
 </script>
 

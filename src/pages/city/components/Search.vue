@@ -2,27 +2,94 @@
     <div>
         <div class="search">
             <input
+                v-model="kword"
                 class="search-input"
                 type="text"
                 name=""
                 placeholder="输入城市名或者拼音"
             />
         </div>
-        <!-- <div class="search-content">
+        <div
+            class="search-content"
+            ref="search"
+            v-show="kword"
+        >
             <ul>
                 <li
                     class="search-item border-bottom"
+                    v-for="item of list"
+                    :key="item.id"
+                    @click="handCityClick(item.name)"
                 >
-                    北京
+                    {{item.name}}
                 </li> 
+                <li
+                    class="search-item border-bottom"
+                    v-if="hasNoData"
+                >
+                    无匹配数据
+                </li>
             </ul>
-        </div> -->
+        </div>
     </div>
 </template>
 
 <script>
+import {mapMutations} from "vuex"
+import Bscroll from "better-scroll"
 export default {
-    name: "CitySearch"
+    name: "CitySearch",
+    props: {
+        cities: Object
+    },
+    data () {
+        return {
+            kword: '',
+            timer: null,
+            list: [],
+            // hasNoData: false
+            // cities: {}
+        }
+    },
+    methods: {
+        handCityClick(city){
+            this.changeCity(city)
+            this.$router.push('/')
+        },
+        ...mapMutations(['changeCity'])
+    },
+    watch: {
+        kword(){
+            let result = []
+            if(this.timer){
+                clearTimeout(this.timer)
+            }
+            if(!this.kword){
+                this.list = []
+                return
+            }
+            // 函数截留
+            this.timer = setTimeout(()=>{
+                for(let i in this.cities){
+                    this.cities[i].forEach((value) => {
+                        if(value.spell.indexOf(this.kword) > -1 || value.name.indexOf(this.kword) > -1){
+                            result.push(value)
+                        }
+                    })
+                }
+            }, 19)
+            this.list = result
+        }
+    },
+    computed:{
+        // 逻辑与样式分离
+        hasNoData() {
+            return !this.list.length
+        }
+    },
+    mounted(){
+        this.scroll = new Bscroll(this.$refs.search)
+    }
 }
 </script>
 
