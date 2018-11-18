@@ -32,7 +32,7 @@ export default {
     methods : {
         handleScroll () {
             const top = document.documentElement.scrollTop
-            console.log(top)
+            // console.log(top)
             if(top > 40 && top < 140){
                 let opacity = top/140
                 opacity = opacity > 1 ? 1 : opacity
@@ -52,6 +52,7 @@ export default {
         window.addEventListener("scroll", this.handleScroll)
     },
     unmounted () {
+        // 全局事件的解绑, 
         window.removeEventListener('scroll', this.handleScroll)
     }
 }
@@ -73,6 +74,7 @@ export default {
             font-size .4rem
             color #fff
     .header-fixed
+        z-index 2
         position: fixed
         top: 0
         left 0

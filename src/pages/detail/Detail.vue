@@ -7,6 +7,7 @@
         ></detail-banner>
         <detail-header></detail-header>
         <div class="content">
+            <detail-list :list="list"></detail-list>
         </div>
     </div>
 </template>
@@ -14,24 +15,32 @@
     import axios from "axios"
     import DetailBanner from './components/Banner'
     import DetailHeader from './components/Header'
+    import DetailList from './components/List'
     export default {
         name: "Detail",
         components:{
             DetailBanner,
-            DetailHeader
+            DetailHeader,
+            DetailList
         },
         data (){
             return{
                 sightName: "",
                 bannerImg: "",
                 gallaryImgs: [],
-                categoryList: []
+                list: []
             }
         },
         methods : {
             getDetailInfo(){
-                axios.get("/api/detail.json")
+                axios.get("/api/detail.json",{
+                    params: {
+                        id: this.$route.params.id
+                    }
+                }
+                )
                     .then(this.HandlerDetailInfo)
+                // axios.get("/api/detail.json?id=" + this.$route.params.id)
             },
             HandlerDetailInfo(ret){
                 ret = ret.data
@@ -41,7 +50,7 @@
                     this.sightName = data.sightName
                     this.bannerImg = data.bannerImg
                     this.gallaryImgs = data.gallaryImgs
-                    this.categoryList = data.categoryList
+                    this.list = data.categoryList
                 }
             }
         },
