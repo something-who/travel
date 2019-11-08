@@ -47,9 +47,13 @@
         },
         methods:{
             getCitiesInfo(){
-                axios.get("/api/city.json")
+                axios.get("/api/static/mock/city.json")
                     .then(this.handleCityData)
             },
+            // getCitiesInfo(){
+            //     axios.get("http://localhost:8080/static/mock/city.json")
+            //         .then(this.handleCityData)
+            // },
             handleCityData(res){
                 res = res.data
                 if(res.ret && res.data){

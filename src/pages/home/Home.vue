@@ -45,7 +45,7 @@ export default {
         // get Home ajax json
         getHomeInfo(){
             // returun a object *then*
-            axios.get("/api/index.json?city=" + this.city)
+            axios.get("/api/static/mock/index.json?city=" + this.city)
                 .then(this.getHomeInfoSucc)
         },
 
